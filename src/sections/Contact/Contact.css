@@ -21,7 +21,7 @@
   font-size: 1.1rem;
 }
 
-.social-links {
+.contact-info .social-links {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;

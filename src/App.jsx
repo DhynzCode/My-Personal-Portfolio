@@ -1,28 +1,29 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
-import ScrollReveal from './components/ScrollReveal';
-import ParticleBackground from './components/ParticleBackground';
+import Navbar from './layouts/Navbar/Navbar';
+import Hero from './sections/Hero/Hero';
+import About from './sections/About/About';
+import Skills from './sections/Skills/Skills';
+import Projects from './sections/Projects/Projects';
+import Contact from './sections/Contact/Contact';
+import Footer from './layouts/Footer/Footer';
+import ParticleBackground from './components/effects/ParticleBackground/ParticleBackground';
 import { ThemeProvider } from './context/ThemeContext';
-import './index.css';
+import useScrollReveal from './hooks/useScrollReveal';
+import './styles/index.css';
 
 function App() {
+  useScrollReveal();
+
   return (
     <ThemeProvider>
       <div className="App">
         <ParticleBackground />
-        <ScrollReveal />
         <Navbar />
         <main>
           <Hero />
           <About />
           <Skills />
           <Projects />
-          <ContactForm />
+          <Contact />
         </main>
         <Footer />
       </div>

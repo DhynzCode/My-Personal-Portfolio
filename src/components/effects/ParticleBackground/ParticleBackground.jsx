@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../../context/ThemeContext';
 import './ParticleBackground.css';
-import particlesConfig from '../assets/particles.json';
+import particlesConfig from '../../../assets/particles.json';
 
 const ParticleBackground = () => {
   const { theme } = useTheme();

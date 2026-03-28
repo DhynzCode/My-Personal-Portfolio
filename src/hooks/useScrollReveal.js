@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const ScrollReveal = () => {
+const useScrollReveal = () => {
   useEffect(() => {
     const reveals = document.querySelectorAll('.reveal');
     
@@ -8,7 +8,6 @@ const ScrollReveal = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          // Once it's revealed, we can stop observing it
           revealObserver.unobserve(entry.target);
         }
       });
@@ -23,12 +22,10 @@ const ScrollReveal = () => {
 
     return () => {
       reveals.forEach(reveal => {
-        revealObserver.unobserve(reveal);
+        revealObserver.disconnect();
       });
     };
   }, []);
-
-  return null; // This component just handles side effects
 };
 
-export default ScrollReveal;
+export default useScrollReveal;
