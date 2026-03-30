@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
-import profileImg from '../../assets/profile.jpg';
-import './Hero.css';
+import { useTheme } from '../../context/ThemeContext';
+import darkProfile from '../../assets/Darkmodeprofile.png';
+import lightProfile from '../../assets/ligthmodeprofile.png';
+import '../../components/css/stylesection.css';
 
-const Hero = () => {
-  const titles = ['Full Stack Developer', 'Python Developer', 'UI Designer'];
-  const [displayText, setDisplayText] = useState('');
+const Home = () => {
+  const { theme } = useTheme();
+  const titles = ['Web Developer', 'Javascript Developer', 'BIST Student'];
+  const [displayText, setDisplayText] = useState('ok');
   const [titleIndex, setTitleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  const [typingSpeed, setTypingSpeed] = useState(350);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -20,7 +23,7 @@ const Hero = () => {
           : currentTitle.substring(0, prev.length + 1)
       );
 
-      setTypingSpeed(shouldDelete ? 75 : 150);
+      setTypingSpeed(shouldDelete ? 20 : 350);
 
       if (!shouldDelete && displayText === currentTitle) {
         setTimeout(() => setIsDeleting(true), 2000);
@@ -32,18 +35,20 @@ const Hero = () => {
 
     const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, titleIndex]);
+  }, [displayText, isDeleting, titleIndex, titles, typingSpeed]);
+
+  const currentImg = theme === 'dark' ? darkProfile : lightProfile;
 
   return (
-    <section id="home" className="hero-section">
-      <div className="container hero-container">
-        <div className="hero-content">
-          <h3 className="hero-hello reveal">Hello, it's Me</h3>
-          <h1 className="hero-name reveal">Gea sir </h1>
-          <h2 className="hero-typing reveal">
+    <section id="home" className="home-section">
+      <div className="container home-container">
+        <div className="home-content">
+          <h3 className="home-hello reveal">Hello, it's Me</h3>
+          <h1 className="home-name reveal"> Gea sir </h1>
+          <h2 className="home-typing reveal">
             And I'm a <span>{displayText}</span><span className="cursor">|</span>
           </h2>
-          <p className="hero-subtitle reveal">
+          <p className="home-subtitle reveal">
             I build modern, high-performance web applications using React, Javascript, HTML and CSS. with all information about myself hope you will like it.
           </p>
 
@@ -62,14 +67,19 @@ const Hero = () => {
             </a>
           </div>
 
-          <div className="hero-btns reveal">
+          <div className="home-btns reveal">
             <a href="#" className="download-btn">Download CV</a>
           </div>
         </div>
-        <div className="hero-image reveal">
+        <div className="home-image reveal">
           <div className="image-wrapper">
-            <img src={profileImg} alt="Vitor Profile" />
-            <div className="image-bg"></div>
+            <img
+              key={theme}
+              src={currentImg}
+              alt="Gea Profile"
+              className="profile-img"
+            />
+            <div className={`image-bg ${theme === 'dark' ? 'dark-glow' : ''}`}></div>
           </div>
         </div>
       </div>
@@ -77,4 +87,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Home;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Contact.css';
+import '../../components/css/stylesection.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -55,9 +55,9 @@ const Contact = () => {
               Whether you have a question, a project idea, or just want to say hi, feel free to reach out. I'm always open to new opportunities.
             </p>
             <div className="social-links">
-               <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">GitHub</a>
-               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">LinkedIn</a>
-               <a href="mailto:vitor@developer.com" className="social-icon">Email</a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">GitHub</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">LinkedIn</a>
+              <a href="mailto:vitor@developer.com" className="social-icon">Email</a>
             </div>
           </div>
 

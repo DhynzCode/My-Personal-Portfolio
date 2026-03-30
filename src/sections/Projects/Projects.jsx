@@ -1,4 +1,4 @@
-import './Projects.css';
+import '../../components/css/stylesection.css';
 
 const ProjectCard = ({ project }) => {
   return (

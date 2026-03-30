@@ -1,4 +1,4 @@
-import './Skills.css';
+import '../../components/css/stylesection.css';
 
 const Skills = () => {
   const categories = [
@@ -47,8 +47,8 @@ const Skills = () => {
                       <span className="skill-percentage">{skill.level}%</span>
                     </div>
                     <div className="progress-bar">
-                      <div 
-                        className="progress-fill" 
+                      <div
+                        className="progress-fill"
                         style={{ '--width': `${skill.level}%` }}
                       ></div>
                     </div>

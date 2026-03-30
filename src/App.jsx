@@ -1,5 +1,5 @@
 import Navbar from './layouts/Navbar/Navbar';
-import Hero from './sections/Hero/Hero';
+import Home from './sections/Home/Home';
 import About from './sections/About/About';
 import Skills from './sections/Skills/Skills';
 import Projects from './sections/Projects/Projects';
@@ -19,7 +19,7 @@ function App() {
         <ParticleBackground />
         <Navbar />
         <main>
-          <Hero />
+          <Home />
           <About />
           <Skills />
           <Projects />
