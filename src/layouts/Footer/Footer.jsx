@@ -1,4 +1,4 @@
-import './Footer.css';
+import '../../components/css/stylesection.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,16 +9,16 @@ const Footer = () => {
         <div className="footer-logo">
           <a href="#home">Portfolio<span>.</span></a>
         </div>
-        
+
         <p className="copyright">
-          &copy; {currentYear} Vitor Developer. All rights reserved.
+          &copy; {currentYear} Gea sir developer. All rights reserved.
         </p>
 
         <div className="footer-links">
-           <a href="#home">Home</a>
-           <a href="#about">About</a>
-           <a href="#projects">Projects</a>
-           <a href="#contact">Contact</a>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </footer>
