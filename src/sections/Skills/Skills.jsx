@@ -1,4 +1,4 @@
-import '../../components/css/stylesection.css';
+import '../../components/css/Skills.css';
 
 const Skills = () => {
   const categories = [

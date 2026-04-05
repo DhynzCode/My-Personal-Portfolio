@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import darkProfile from '../../assets/Darkmodeprofile.png';
 import lightProfile from '../../assets/ligthmodeprofile.png';
-import '../../components/css/stylesection.css';
+import '../../components/css/Home.css';
 
 const Home = () => {
   const { theme } = useTheme();

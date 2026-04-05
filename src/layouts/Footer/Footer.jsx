@@ -1,4 +1,4 @@
-import '../../components/css/stylesection.css';
+import '../../components/css/Footer.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,6 +18,7 @@ const Footer = () => {
           <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
+          <a href="#certificates">Certificates</a>
           <a href="#contact">Contact</a>
         </div>
       </div>

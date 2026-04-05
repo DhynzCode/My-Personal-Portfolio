@@ -4,6 +4,7 @@ import About from './sections/About/About';
 import Skills from './sections/Skills/Skills';
 import Projects from './sections/Projects/Projects';
 import Contact from './sections/Contact/Contact';
+import Certificates from './sections/Certificates/Certificates';
 import Footer from './layouts/Footer/Footer';
 import ParticleBackground from './components/effects/ParticleBackground/ParticleBackground';
 import { ThemeProvider } from './context/ThemeContext';
@@ -23,6 +24,7 @@ function App() {
           <About />
           <Skills />
           <Projects />
+          <Certificates />
           <Contact />
         </main>
         <Footer />
