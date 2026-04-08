@@ -68,7 +68,7 @@ const About = () => {
                 </p>
                 <p>
                   My journey in tech started with a curiosity about how websites work, which led me to pursue mastering modern frameworks. I'm always eager to learn new technologies and improve my skills, especially in integrating AI into development.
-                </p>
+                </p>  
               </div>
             </div>
           </div>
