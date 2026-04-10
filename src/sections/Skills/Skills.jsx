@@ -1,14 +1,64 @@
 import { useState } from 'react';
 import '../../components/css/Skills.css';
 
+// Frontend Logos
+import htmlImg from '../../assets/techskills/HTML5.png';
+import cssImg from '../../assets/techskills/CSS3.png';
+import jsImg from '../../assets/techskills/JavaScript.png';
+import tsImg from '../../assets/techskills/TypeScript.png';
+import reactImg from '../../assets/react.svg';
+import nextImg from '../../assets/techskills/NextJS.png';
+import tailwindImg from '../../assets/techskills/Tailwind.png';
+import viteImg from '../../assets/techskills/Vite.png';
+
+// Backend Logos
+import nodeImg from '../../assets/techskills/NodeJS.png';
+import expressImg from '../../assets/techskills/Express.png';
+import phpImg from '../../assets/techskills/PHP.png';
+import laravelImg from '../../assets/techskills/Laravel.png';
+import mysqlImg from '../../assets/techskills/MySQL.png';
+import mongoImg from '../../assets/techskills/MongoDB.png';
+import firebaseImg from '../../assets/techskills/Firebase.png';
+import pythonImg from '../../assets/techskills/Python.png';
+import csharpImg from '../../assets/techskills/CSharp.png';
+import cppImg from '../../assets/techskills/CPlusPlus.png';
+import dartImg from '../../assets/techskills/Dart.png';
+
+// Tool Logos
+import gitImg from '../../assets/techskills/Git.png';
+import githubImg from '../../assets/techskills/GitHub.png';
+import vscodeImg from '../../assets/techskills/VSCode.png';
+import composerImg from '../../assets/techskills/Composer.png';
+
 const technicalSkills = [
-  { name: 'Python', icon: '🐍', level: 85 },
-  { name: 'CSS', icon: '🎨', level: 90 },
-  { name: 'JavaScript', icon: 'JS', level: 80 },
-  { name: 'Fast API', icon: '⚡', level: 75 },
-  { name: 'ReactJS', icon: '⚛️', level: 85 },
-  { name: 'HTML', icon: '🌐', level: 95 },
-  { name: 'Machine Learning', icon: '🤖', level: 70 },
+  // Frontend first
+  { name: 'HTML5', icon: htmlImg, level: 95, cat: 'frontend' },
+  { name: 'CSS3', icon: cssImg, level: 90, cat: 'frontend' },
+  { name: 'JavaScript', icon: jsImg, level: 85, cat: 'frontend' },
+  { name: 'TypeScript', icon: tsImg, level: 80, cat: 'frontend' },
+  { name: 'ReactJS', icon: reactImg, level: 85, cat: 'frontend' },
+  { name: 'Next.js', icon: nextImg, level: 75, cat: 'frontend' },
+  { name: 'Tailwind CSS', icon: tailwindImg, level: 85, cat: 'frontend' },
+  { name: 'Vite', icon: viteImg, level: 80, cat: 'frontend' },
+  
+  // Backend tech
+  { name: 'Node.js', icon: nodeImg, level: 80, cat: 'backend' },
+  { name: 'Express', icon: expressImg, level: 75, cat: 'backend' },
+  { name: 'PHP', icon: phpImg, level: 70, cat: 'backend' },
+  { name: 'Laravel', icon: laravelImg, level: 65, cat: 'backend' },
+  { name: 'MySQL', icon: mysqlImg, level: 80, cat: 'backend' },
+  { name: 'MongoDB', icon: mongoImg, level: 75, cat: 'backend' },
+  { name: 'Firebase', icon: firebaseImg, level: 75, cat: 'backend' },
+  { name: 'Python', icon: pythonImg, level: 85, cat: 'backend' },
+  { name: 'C#', icon: csharpImg, level: 60, cat: 'backend' },
+  { name: 'C++', icon: cppImg, level: 65, cat: 'backend' },
+  { name: 'Dart', icon: dartImg, level: 55, cat: 'backend' },
+
+  // Tools
+  { name: 'Git', icon: gitImg, level: 90, cat: 'tool' },
+  { name: 'GitHub', icon: githubImg, level: 85, cat: 'tool' },
+  { name: 'VS Code', icon: vscodeImg, level: 95, cat: 'tool' },
+  { name: 'Composer', icon: composerImg, level: 70, cat: 'tool' },
 ];
 
 const softSkills = [
@@ -16,105 +66,123 @@ const softSkills = [
   { name: 'Team Work', level: 85 },
   { name: 'Project Management', level: 80 },
   { name: 'Creativity', level: 75 },
+  { name: 'Problem Solving', level: 85 },
+  { name: 'Adaptability', level: 80 },
 ];
+
+const chunkArray = (array, size) => {
+  const chunks = [];
+  for (let i = 0; i < array.length; i += size) {
+    chunks.push(array.slice(i, i + size));
+  }
+  return chunks;
+};
 
 const SkillCard = ({ skill, type }) => {
   const [isHovered, setIsHovered] = useState(false);
-
-  // Progress Ring Logic
-  const radius = 35;
+  const radius = 30;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (skill.level / 100) * circumference;
 
   return (
     <div 
-      className={`skill-card reveal ${isHovered ? 'hovered' : ''}`}
+      className={`skill-card ${isHovered ? 'hovered' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="card-content">
-        {type === 'tech' ? (
-          <>
-            <div className="skill-main">
-              <span className="skill-icon">{skill.icon}</span>
-              <span className="skill-name">{skill.name}</span>
-            </div>
-            
-            <div className={`progress-container ${isHovered ? 'visible' : ''}`}>
-              <div className="progress-label">
-                <span className="percentage">{skill.level}%</span>
-              </div>
-              <div className="progress-bar">
-                <div 
-                  className="progress-fill" 
-                  style={{ width: isHovered ? `${skill.level}%` : '0%' }}
-                ></div>
-              </div>
-            </div>
-          </>
-        ) : (
-          <div className="soft-skill-content">
-            <div className={`progress-ring-container ${isHovered ? 'visible' : ''}`}>
-              <svg className="progress-ring" width="80" height="80">
-                <circle
-                  className="progress-ring__background"
-                  stroke="rgba(255,255,255,0.05)"
-                  strokeWidth="6"
-                  fill="transparent"
-                  r={radius}
-                  cx="40"
-                  cy="40"
-                />
-                <circle
-                  className="progress-ring__circle"
-                  stroke="var(--accent-primary)"
-                  strokeWidth="6"
-                  strokeDasharray={circumference}
-                  style={{ strokeDashoffset: isHovered ? strokeDashoffset : circumference }}
-                  strokeLinecap="round"
-                  fill="transparent"
-                  r={radius}
-                  cx="40"
-                  cy="40"
-                />
-              </svg>
-              <span className="percentage-ring">{skill.level}%</span>
-            </div>
-            <span className="skill-name">{skill.name}</span>
+      {type === 'tech' ? (
+        <div className="tech-card-inner">
+          <div className="skill-icon-wrapper">
+            <img src={skill.icon} alt={skill.name} className="skill-icon-img" />
           </div>
-        )}
-      </div>
+          <div className="skill-info">
+            <span className="skill-name">{skill.name}</span>
+            <div className={`skill-reveal-area ${isHovered ? 'visible' : ''}`}>
+               <div className="skill-progress-bar">
+                  <div className="skill-progress-fill" style={{ width: `${skill.level}%` }}></div>
+               </div>
+               <span className="skill-percent">{skill.level}%</span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="soft-card-inner">
+          <div className="soft-ring-wrapper">
+            <svg width="60" height="60">
+              <circle cx="30" cy="30" r={radius} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="4" />
+              <circle 
+                cx="30" cy="30" r={radius} fill="none" stroke="var(--accent-primary)" 
+                strokeWidth="4" strokeDasharray={circumference} 
+                strokeDashoffset={circumference - (skill.level / 100) * circumference}
+                strokeLinecap="round"
+              />
+            </svg>
+            <span className="ring-percent">{skill.level}%</span>
+          </div>
+          <span className="skill-name">{skill.name}</span>
+        </div>
+      )}
     </div>
   );
 };
 
 const Skills = () => {
+  const [techIndex, setTechIndex] = useState(0);
+  const [softIndex, setSoftIndex] = useState(0);
+
+  // Group tech skills by 12 per slide for denser display now that bars are hidden
+  const techChunks = chunkArray(technicalSkills, 12);
+  const softChunks = chunkArray(softSkills, 3);
+
+  const handleNextTech = () => setTechIndex((prev) => (prev + 1) % techChunks.length);
+  const handlePrevTech = () => setTechIndex((prev) => (prev - 1 + techChunks.length) % techChunks.length);
+
+  const handleNextSoft = () => setSoftIndex((prev) => (prev + 1) % softChunks.length);
+  const handlePrevSoft = () => setSoftIndex((prev) => (prev - 1 + softChunks.length) % softChunks.length);
+
   return (
     <section id="skills" className="section color-bg">
       <div className="container">
-        <div className="skills-categories-grid">
-          {/* Technical Skills Category */}
-          <div className="skills-category">
-            <h2 className="category-header">Technical <span>Skills</span></h2>
-            <div className="skills-dashboard-card tech-dashboard">
-              <div className="skills-items-grid">
-                {technicalSkills.map((skill, idx) => (
-                  <SkillCard key={idx} skill={skill} type="tech" />
-                ))}
-              </div>
-            </div>
+        <h2 className="section-title reveal">My <span>Skills</span></h2>
+        
+        <div className="skills-sliders-container">
+          {/* Technical Skills Slider */}
+          <div className="skills-slider-box">
+             <h3 className="slider-header">Technical <span>Skills</span> (Frontend • Backend • Tools)</h3>
+             <div className="slider-viewport">
+                <button className="slider-arrow prev" onClick={handlePrevTech}>‹</button>
+                <div className="slider-track" style={{ transform: `translateX(-${techIndex * 100}%)` }}>
+                   {techChunks.map((chunk, idx) => (
+                      <div key={idx} className="skill-group-slide">
+                         <div className="tech-grid compact">
+                            {chunk.map((skill, i) => (
+                               <SkillCard key={i} skill={skill} type="tech" />
+                            ))}
+                         </div>
+                      </div>
+                   ))}
+                </div>
+                <button className="slider-arrow next" onClick={handleNextTech}>›</button>
+             </div>
           </div>
 
-          {/* Soft Skills Category */}
-          <div className="skills-category">
-            <h2 className="category-header">Professional <span>Skills</span></h2>
-            <div className="skills-dashboard-card soft-dashboard">
-              <div className="skills-items-grid soft-grid">
-                {softSkills.map((skill, idx) => (
-                  <SkillCard key={idx} skill={skill} type="soft" />
-                ))}
-              </div>
-            </div>
+          {/* Soft Skills Slider */}
+          <div className="skills-slider-box">
+             <h3 className="slider-header">Professional <span>Skills</span></h3>
+             <div className="slider-viewport">
+                <button className="slider-arrow prev" onClick={handlePrevSoft}>‹</button>
+                <div className="slider-track" style={{ transform: `translateX(-${softIndex * 100}%)` }}>
+                   {softChunks.map((chunk, idx) => (
+                      <div key={idx} className="skill-group-slide">
+                         <div className="soft-grid">
+                            {chunk.map((skill, i) => (
+                               <SkillCard key={i} skill={skill} type="soft" />
+                            ))}
+                         </div>
+                      </div>
+                   ))}
+                </div>
+                <button className="slider-arrow next" onClick={handleNextSoft}>›</button>
+             </div>
           </div>
         </div>
       </div>
