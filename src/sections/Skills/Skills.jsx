@@ -80,7 +80,7 @@ const chunkArray = (array, size) => {
 
 const SkillCard = ({ skill, type }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const radius = 30;
+  const radius = 26;
   const circumference = 2 * Math.PI * radius;
 
   return (
@@ -108,7 +108,7 @@ const SkillCard = ({ skill, type }) => {
         <div className="soft-card-inner">
           <div className="soft-ring-wrapper">
             <svg width="60" height="60">
-              <circle cx="30" cy="30" r={radius} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="4" />
+              <circle cx="30" cy="30" r={radius} fill="none" className="progress-ring-track" strokeWidth="4" />
               <circle 
                 cx="30" cy="30" r={radius} fill="none" stroke="var(--accent-primary)" 
                 strokeWidth="4" strokeDasharray={circumference} 
@@ -149,19 +149,29 @@ const Skills = () => {
           <div className="skills-slider-box">
              <h3 className="slider-header">Technical <span>Skills</span> (Frontend • Backend • Tools)</h3>
              <div className="slider-viewport">
-                <button className="slider-arrow prev" onClick={handlePrevTech}>‹</button>
-                <div className="slider-track" style={{ transform: `translateX(-${techIndex * 100}%)` }}>
-                   {techChunks.map((chunk, idx) => (
-                      <div key={idx} className="skill-group-slide">
-                         <div className="tech-grid compact">
-                            {chunk.map((skill, i) => (
-                               <SkillCard key={i} skill={skill} type="tech" />
-                            ))}
-                         </div>
-                      </div>
-                   ))}
-                </div>
-                <button className="slider-arrow next" onClick={handleNextTech}>›</button>
+                 <button className="slider-arrow prev" onClick={handlePrevTech} aria-label="Previous">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                       <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                 </button>
+                 <div className="slider-track-container" style={{ overflow: 'hidden', width: '100%', padding: '1rem 0' }}>
+                    <div className="slider-track" style={{ transform: `translateX(-${techIndex * 100}%)` }}>
+                       {techChunks.map((chunk, idx) => (
+                          <div key={idx} className="skill-group-slide">
+                             <div className="tech-grid compact">
+                                {chunk.map((skill, i) => (
+                                   <SkillCard key={i} skill={skill} type="tech" />
+                                ))}
+                             </div>
+                          </div>
+                       ))}
+                    </div>
+                 </div>
+                 <button className="slider-arrow next" onClick={handleNextTech} aria-label="Next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                       <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                 </button>
              </div>
           </div>
 
@@ -169,19 +179,29 @@ const Skills = () => {
           <div className="skills-slider-box">
              <h3 className="slider-header">Professional <span>Skills</span></h3>
              <div className="slider-viewport">
-                <button className="slider-arrow prev" onClick={handlePrevSoft}>‹</button>
-                <div className="slider-track" style={{ transform: `translateX(-${softIndex * 100}%)` }}>
-                   {softChunks.map((chunk, idx) => (
-                      <div key={idx} className="skill-group-slide">
-                         <div className="soft-grid">
-                            {chunk.map((skill, i) => (
-                               <SkillCard key={i} skill={skill} type="soft" />
-                            ))}
-                         </div>
-                      </div>
-                   ))}
-                </div>
-                <button className="slider-arrow next" onClick={handleNextSoft}>›</button>
+                 <button className="slider-arrow prev" onClick={handlePrevSoft} aria-label="Previous">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                       <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                 </button>
+                 <div className="slider-track-container" style={{ overflow: 'hidden', width: '100%', padding: '1rem 0' }}>
+                    <div className="slider-track" style={{ transform: `translateX(-${softIndex * 100}%)` }}>
+                       {softChunks.map((chunk, idx) => (
+                          <div key={idx} className="skill-group-slide">
+                             <div className="soft-grid">
+                                {chunk.map((skill, i) => (
+                                   <SkillCard key={i} skill={skill} type="soft" />
+                                ))}
+                             </div>
+                          </div>
+                       ))}
+                    </div>
+                 </div>
+                 <button className="slider-arrow next" onClick={handleNextSoft} aria-label="Next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                       <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                 </button>
              </div>
           </div>
         </div>

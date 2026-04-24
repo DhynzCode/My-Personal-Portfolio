@@ -3,8 +3,10 @@ import '../../components/css/Contact.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    fullName: '',
+    mobileNumber: '',
+    emailAddress: '',
+    emailSubject: '',
     message: '',
   });
 
@@ -13,11 +15,11 @@ const Contact = () => {
 
   const validate = () => {
     let tempErrors = {};
-    if (!formData.name) tempErrors.name = 'Name is required';
-    if (!formData.email) {
-      tempErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      tempErrors.email = 'Email is invalid';
+    if (!formData.fullName) tempErrors.fullName = 'Name is required';
+    if (!formData.emailAddress) {
+      tempErrors.emailAddress = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.emailAddress)) {
+      tempErrors.emailAddress = 'Email is invalid';
     }
     if (!formData.message) tempErrors.message = 'Message is required';
     setErrors(tempErrors);
@@ -39,7 +41,7 @@ const Contact = () => {
       console.log('Form data submitted:', formData);
       setSubmitted(true);
       // Reset form
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ fullName: '', mobileNumber: '', emailAddress: '', emailSubject: '', message: '' });
       setTimeout(() => setSubmitted(false), 5000);
     }
   };
@@ -47,74 +49,79 @@ const Contact = () => {
   return (
     <section id="contact" className="section contact-section">
       <div className="container">
-        <h2 className="section-title reveal">Get in <span>Touch</span></h2>
-        <div className="contact-container">
-          <div className="contact-info reveal">
-            <h3>Let's collaborate!</h3>
-            <p>
-              Whether you have a question, a project idea, or just want to say hi, feel free to reach out. I'm always open to new opportunities.
-            </p>
-            <div className="social-links">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">GitHub</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">LinkedIn</a>
-              <a href="mailto:vitor@developer.com" className="social-icon">Email</a>
+        <h2 className="section-title reveal">Contact <span>Me!</span></h2>
+        
+        <div className="contact-form-container reveal">
+          {submitted ? (
+            <div className="success-message">
+              <h3>Message Sent Successfully!</h3>
+              <p>Thank you for reaching out. I'll get back to you soon.</p>
             </div>
-          </div>
-
-          <div className="contact-form-wrapper reveal">
-            {submitted ? (
-              <div className="success-message">
-                <h3>Message Sent Successfully!</h3>
-                <p>Thank you for reaching out. I'll get back to you soon.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="contact-form">
+          ) : (
+            <form onSubmit={handleSubmit} className="contact-form">
+              <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name">Name</label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    name="fullName"
+                    value={formData.fullName}
                     onChange={handleChange}
-                    placeholder="Your Name"
-                    className={errors.name ? 'error' : ''}
+                    placeholder="Full Name"
+                    className={errors.fullName ? 'error' : ''}
                   />
-                  {errors.name && <span className="error-text">{errors.name}</span>}
+                  {errors.fullName && <span className="error-text">{errors.fullName}</span>}
                 </div>
-
                 <div className="form-group">
-                  <label htmlFor="email">Email</label>
+                  <input
+                    type="tel"
+                    name="mobileNumber"
+                    value={formData.mobileNumber}
+                    onChange={handleChange}
+                    placeholder="Mobile Number"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
                   <input
                     type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                    name="emailAddress"
+                    value={formData.emailAddress}
                     onChange={handleChange}
-                    placeholder="Your Email"
-                    className={errors.email ? 'error' : ''}
+                    placeholder="Email Address"
+                    className={errors.emailAddress ? 'error' : ''}
                   />
-                  {errors.email && <span className="error-text">{errors.email}</span>}
+                  {errors.emailAddress && <span className="error-text">{errors.emailAddress}</span>}
                 </div>
-
                 <div className="form-group">
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    value={formData.message}
+                  <input
+                    type="text"
+                    name="emailSubject"
+                    value={formData.emailSubject}
                     onChange={handleChange}
-                    placeholder="Your Message"
-                    className={errors.message ? 'error' : ''}
-                  ></textarea>
-                  {errors.message && <span className="error-text">{errors.message}</span>}
+                    placeholder="Email subject"
+                  />
                 </div>
+              </div>
 
-                <button type="submit" className="primary-btn">Send Message</button>
-              </form>
-            )}
-          </div>
+              <div className="form-group full-width">
+                <textarea
+                  name="message"
+                  rows="10"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Type your message..."
+                  className={errors.message ? 'error' : ''}
+                ></textarea>
+                {errors.message && <span className="error-text">{errors.message}</span>}
+              </div>
+
+              <div className="form-submit">
+                <button type="submit" className="primary-btn submit-btn">Send</button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </section>

@@ -11,7 +11,12 @@ import nodeImg from '../../assets/techskills/Node.js.png';
 import gitImg from '../../assets/techskills/Git.png';
 import firebaseImg from '../../assets/techskills/Firebase.png';
 import mongoImg from '../../assets/techskills/MongoDB.png';
-import tailwindImg from '../../assets/techskills/Tailwind CSS.png';
+import tailwindImg from '../../assets/techskills/Tailwind.png';
+
+// Import Project Thumbnails
+import ecommerceImg from '../../assets/projects/ecommerce.png';
+import taskAppImg from '../../assets/projects/taskapp.png';
+import aiGenImg from '../../assets/projects/aigen.png';
 
 // Data
 const technicalSkills = [
@@ -39,7 +44,7 @@ const projects = [
     title: 'E-Commerce Platform',
     description: 'A full-featured online store with product filtering, cart functionality, and secure checkout.',
     tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    image: 'https://via.placeholder.com/600x400',
+    image: ecommerceImg,
     github: '#',
     demo: '#',
   },
@@ -47,7 +52,7 @@ const projects = [
     title: 'Task Management App',
     description: 'A collaborative tool for teams to manage projects, track tasks, and communicate in real-time.',
     tech: ['React', 'Firebase', 'Socket.io', 'CSS'],
-    image: 'https://via.placeholder.com/600x400',
+    image: taskAppImg,
     github: '#',
     demo: '#',
   },
@@ -55,7 +60,7 @@ const projects = [
     title: 'AI Image Generator',
     description: 'An application that uses OpenAI’s DALL-E API to generate unique images based on user prompts.',
     tech: ['JavaScript', 'React', 'Tailwind', 'OpenAI'],
-    image: 'https://via.placeholder.com/600x400',
+    image: aiGenImg,
     github: '#',
     demo: '#',
   },
@@ -89,7 +94,9 @@ const PortfolioSlider = () => {
         <div className="slider-outer-container">
           {/* Navigation Arrows */}
           <button className="slider-arrow left-arrow" onClick={prevSlide} aria-label="Previous Slide">
-            ‹
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+               <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
           </button>
           
           <div className="slider-viewport">
@@ -135,11 +142,11 @@ const PortfolioSlider = () => {
                           <div className="progress-ring-box">
                             <svg className="ring-svg" width="80" height="80">
                               <circle cx="40" cy="40" r="35" className="ring-bg" />
-                              <circle 
-                                cx="40" cy="40" r="35" 
-                                className="ring-fill" 
-                                style={{ strokeDashoffset: 219.9 - (219.9 * skill.level) / 100 }}
-                              />
+                                <circle 
+                                  cx="40" cy="40" r="34" 
+                                  className="ring-fill" 
+                                  style={{ strokeDashoffset: 213.6 - (213.6 * skill.level) / 100, strokeDasharray: 213.6 }}
+                                />
                             </svg>
                             <span className="ring-text">{skill.level}%</span>
                           </div>
@@ -186,7 +193,9 @@ const PortfolioSlider = () => {
           </div>
 
           <button className="slider-arrow right-arrow" onClick={nextSlide} aria-label="Next Slide">
-            ›
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+               <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </button>
         </div>
 
