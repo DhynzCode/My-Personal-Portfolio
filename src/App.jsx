@@ -7,6 +7,7 @@ import Contact from './sections/Contact/Contact';
 import Certificates from './sections/Certificates/Certificates';
 import Footer from './layouts/Footer/Footer';
 import ParticleBackground from './components/effects/ParticleBackground/ParticleBackground';
+import ChatBot from './components/ChatBot';
 import { ThemeProvider } from './context/ThemeContext';
 import useScrollReveal from './hooks/useScrollReveal';
 import './styles/index.css';
@@ -28,6 +29,7 @@ function App() {
           <Contact />
         </main>
         <Footer />
+        <ChatBot />
       </div>
     </ThemeProvider>
   );
