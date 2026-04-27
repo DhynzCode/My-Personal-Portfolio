@@ -270,6 +270,54 @@
   transform: none;
 }
 
+/* Visitor Details Form */
+.visitor-details-form {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.visitor-details-form p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.visitor-details-form input {
+  width: 100%;
+  padding: 10px 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.visitor-details-form input:focus {
+  border-color: var(--accent-primary);
+}
+
+.start-chat-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.start-chat-btn:hover {
+  background: #00b3cc;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 480px) {
   .chat-window {
     width: calc(100vw - 40px);
